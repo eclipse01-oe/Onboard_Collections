@@ -21,6 +21,18 @@ git branch -M main
 git remote add origin https://github.com/eclipse01-oe/Onboard_Collections.git
 git push -u origin main
 
+## update git repo
+
+git status: to show the update
+git add .
+git commit -m 'commit comment'
+git --rebase origin main
+git push origin main
+npm run build
+npm run deploy
+
+
+
 
 todo list:
 

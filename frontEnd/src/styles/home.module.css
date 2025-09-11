@@ -159,6 +159,7 @@
     .cardContainer{
         grid-template-columns: 1fr 1fr;
         margin: 0;
+        margin-bottom: 50px;
     }
     .title{
         margin-left: 3vw;
@@ -202,6 +203,9 @@
 }
 
 @media (max-width: 420px){
+    .searchCon{
+        gap: 4px;
+    }
     .searchCon input{
         width: 60%; 
     }
