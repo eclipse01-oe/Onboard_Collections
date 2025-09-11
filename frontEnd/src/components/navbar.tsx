@@ -12,7 +12,8 @@ const Navbar = () => {
 
     const [showMenu, setShowMenu] = useState(false)
     
-    return (<div className={styles.nav}>
+    return (
+    <div className={styles.nav}>
 
         <div className={styles.logo}>
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>

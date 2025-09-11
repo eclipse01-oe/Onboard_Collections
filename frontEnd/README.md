@@ -36,8 +36,8 @@ npm run deploy
 
 todo list:
 
-work on the navbar [ ]
-work on the image size on smaller screen [ ]
+work on the navbar [✔️]
+work on the image size on smaller screen [✔️]
 work on the bottom bar [ ]
 
 things to add on the navbar:

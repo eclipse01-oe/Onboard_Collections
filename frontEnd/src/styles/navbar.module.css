@@ -191,3 +191,10 @@ ul{
     }
 
 }
+
+@media (max-width: 800px) {
+    .sideNav{
+        width: 60vw;
+        left: 40vw;
+    }
+}
