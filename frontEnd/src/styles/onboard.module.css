@@ -1,0 +1,121 @@
+/* Center the page content vertically and horizontally */
+.onboardingCon{
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+}
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  padding: 2rem;
+  margin: 20px;
+  border-radius: 20px;
+  background-color: #ffffff0e;
+}
+.onboardCart{
+  width: 100px;
+  height: 50px;
+  color: #747bff;
+  background-color: white;
+  border-bottom: 2px #747bff solid;
+}
+.formContainer p{
+  opacity: .7;
+  margin-top: 0;
+}
+
+/* Form layout */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 75%;
+}
+.form input{
+  height: 2.2rem;
+  border-radius: 8px;
+  margin: 0;
+  border: 0;
+  padding: 0 0 0 40px;
+  width: 100%;
+}
+.inputDiv{
+  width: 100%;
+  display: flex;
+  position: relative;
+}
+.inputIcon{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 10px;
+  height: 2.2rem;
+  width: 20px;
+}
+.passwordEye{
+  height: 1.7rem;
+  width: 2rem;
+  margin: 5px;
+  cursor: pointer;
+}
+.form label{
+  font-weight: 800;
+}
+
+.googleAut {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 75%;
+  border: 0 white solid;
+  border-radius: 10px;
+  background-color: white;
+  margin: 10px 0;
+  padding-top: 5px;
+  cursor: pointer;
+}
+.googleAut:hover{
+  border: 1px solid #ffffff;
+  background-color: initial;
+}
+@media (prefers-color-scheme: light){
+  .googleAut:hover{
+  border: 2px solid #263d51ca;
+}
+.formContainer{
+  background-color: #263d5114;
+}
+}
+
+@media (max-width: 800px) {
+  .form {
+    font-size: .8rem !important;
+  }
+  .form input{
+    width: 100%;
+    margin: 0
+  }
+
+}
+
+
+@media (max-width: 1000px) {
+    .formContainer{
+    margin-top: 10vh;
+  }
+}
+
+
+@media (max-width: 600px) {
+    .formContainer{
+    width: 90%;
+    padding: 2rem 0;
+  }
+}
