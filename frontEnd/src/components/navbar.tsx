@@ -9,6 +9,8 @@ import { HiOutlineMenuAlt3 } from 'react-icons/hi';
 
 const isLoggedIn = true;
 const Navbar = () => {
+
+    const [showMenu, setShowMenu] = useState(false)
     
     return (<div className={styles.nav}>
 
@@ -19,15 +21,15 @@ const Navbar = () => {
             </div>
                 
             <div className={styles.menuBtnCon}>
-                <HiOutlineMenuAlt3 className={styles.menuBtn}/>
+                <HiOutlineMenuAlt3 className={styles.menuBtn} onClick={()=>setShowMenu(true)}/>
             </div>
         </div>
 
         
 
-        <div className={styles.sideNav}>
+        <div className={styles.sideNav + (showMenu? ` ${styles.showSideNav}`:'')}>
             <div className={styles.navCloseBtn}>
-                <MdOutlineCancel className={styles.navCloseIcon}/>
+                <MdOutlineCancel className={styles.navCloseIcon} onClick={()=>setShowMenu(false)}/>
             </div>
             <div className={styles.navUser}>
                 <div className={styles.navUserIconDiv}>

@@ -1,7 +1,6 @@
 .logo{
     display: flex;
-    padding: 5px 10px;
-    margin-left: 20px;
+    padding: 5px 20px;
     z-index: 8;
     position: fixed;
     align-items: center;
@@ -62,7 +61,6 @@ ul{
     width: 60vw;
     bottom: 30px;
     left: 30vw;
-    right: 10vw;
 }
 .bottomNav ul{
     display: flex;
@@ -137,9 +135,9 @@ ul{
 @media (max-width: 1000px) {
 
     .sideNav{
-        display: flex;
+        display: none;
         position: fixed;
-        z-index: 9;
+        z-index: 9000;
         flex-direction: column;
         width: 40vw;
         height: 100%;
@@ -150,10 +148,14 @@ ul{
         border-left: 2px rgba(41, 137, 255, 0.202) solid;
     }
 
+    .showSideNav{
+        display: flex;
+    }
+
     .nav{
         width: 100vw;
         position: fixed;
-        height: 8vh;
+        height: 55px;
         top: 0;
         z-index: 100;
         background-color: #262424;
@@ -178,8 +180,14 @@ ul{
     .navUserIconDiv{
         margin-top: 0;
     }
+
     .menuBtnCon{
     display: flex;
-}
+    }
+
+    .bottomNav{
+        width: 80vw;
+        left: 10vw;
+    }
 
 }

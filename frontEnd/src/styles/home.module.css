@@ -5,20 +5,24 @@
     justify-content: center;
     gap: 20px;
     margin-left: 20vw;
-    padding: 0 5vw;
+    padding: 70px 5vw;
     padding-bottom: 50px;
 }
 .searchCon{
+    background-color: #262424;
     display: flex;
     align-items: normal;
+    width: 100%;
     gap: 20px;
-    margin: 50px;
-    margin-left: 25vw;
-    padding-left: 5vw;
+    padding: 10px;
+    margin-left: 23vw;
+    position: fixed;
+    top: 0;
+    z-index: 5;
 }
 
 .searchCon input{
-    width: 45vw;
+    width: 50%;
     border: none;
     outline: 1px solid;
     height: 3.5rem;
@@ -48,6 +52,7 @@
     font-weight: bold;
     margin: 0 15px 0 0;
     padding: 10px;
+    padding-bottom: 0;
     border-radius: 20px;
 }
 .cardContainer{
@@ -55,7 +60,7 @@
     grid-template-columns: 1fr 1fr 1fr;
     gap: 30px;
     margin-bottom: 50px;
-    padding-top: 20px;
+    padding-top: 30px;
     border-top: 3px black solid;
     border-top-right-radius: 15px;
 }
@@ -123,7 +128,7 @@
     }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1200px) and (min-width: 1000px) {
     .cardContainer{
         grid-template-columns: 1fr 1fr;
     }
@@ -137,15 +142,15 @@
     .container{
         margin-left: auto;
     }
-    .cardContainer{
-        grid-template-columns: 1fr 1fr 1fr;
-    }
     .searchCon{
         margin-left: auto;
         margin-bottom: 30px;
+        top: 50px;
+        padding: 20px;
+        padding-left: 50px;
     }
     .searchCon input{
-        width: 90vw;
+        width: 70%;
     }
 }
 
@@ -153,10 +158,55 @@
 @media (max-width: 800px) {
     .cardContainer{
         grid-template-columns: 1fr 1fr;
-        margin: 0 5vw;
+        margin: 0;
     }
     .title{
         margin-left: 3vw;
+    }
+    .searchCon{
+        padding-left: 20px;
+    }
+}
+
+@media (max-width: 630px){
+    .imgDiv{
+        height: 200px;
+    }
+    .productCard{
+        padding-top: 150px;
+    }
+    button {
+    padding: .3em .6em;
+    }
+    .detailsDiv p{
+        display: none;
+    }
+    .searchCon input, .searchCon button{
+        height: 3rem;
+    }
+}
+
+
+@media (max-width: 520px){
+    button {
+        font-size: .7em;
+    }
+
+    .detailsDiv h3 {
+        font-size: .9em;
+    }
+
+    .searchCon button{
+        width: 3rem;
+    }
+}
+
+@media (max-width: 420px){
+    .searchCon input{
+        width: 60%; 
+    }
+    button{
+        font-size: .6rem;
     }
 }
 
