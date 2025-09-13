@@ -26,29 +26,25 @@ git push -u origin main
 git status: to show the update
 git add .
 git commit -m 'commit comment'
-git --rebase origin main
+git pull --rebase origin main
 git push origin main
 npm run build
 npm run deploy
 
-
-
-
 todo list:
-
-complete the modal box and add animation to it both for suggestion and details []
-add animation to the navbar [✔️]
-work on the bottom bar [✔️]
-move to github [ ]
+- complete the modal box and add animation to it both for suggestion and details []
+- add animation to the navbar [✔️]
+- work on the bottom bar [✔️]
+- move to github [ ]
 
 things to add on the navbar:
-profile
-categories
-settings
-our services
-onboard your product
-contact us
-logout
+- profile
+- categories
+- settings
+- our services
+- onboard your product
+- contact us
+- logout
 
 things to add on the bottom bar:
 home

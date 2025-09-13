@@ -40,7 +40,7 @@ const Login = () => {
             </div>
 
             <div>
-                <p>not a user yet? click <a href="/">here</a> to get started</p>
+                <p>not a user yet? click <a href="/signup">here</a> to get started</p>
             </div>
 
             <div>
