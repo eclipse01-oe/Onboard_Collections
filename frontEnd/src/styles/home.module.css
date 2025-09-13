@@ -320,3 +320,9 @@
     } 
 }
 
+@media (max-width: 380px) {
+    .sliderCon{
+        margin-top: 25%;
+    }
+}
+

@@ -146,12 +146,19 @@ ul{
 .navSignupBtn{
     background-color: rgba(14, 112, 232, 0.665);
 }
+.navLoginBtn{
+    background-color: rgba(0, 0, 0, 0);
+    color: whitesmoke;
+}
 
 
 @media (prefers-color-scheme: light){
 .navSignupBtn{
     background-color: #2c4962eb;
     color: whitesmoke;
+}
+.navLoginBtn{
+    color: #2c4962eb;
 }
 .navSignupBtn:hover{
     color: #2c4962eb;
@@ -233,7 +240,7 @@ ul{
         width: 100%;
     }
     .bottomNavProfile {
-        left: 50%;
+        left: 50.3%;
     }
 
 }
@@ -242,6 +249,9 @@ ul{
     .sideNav{
         width: 60vw;
         left: 40vw;
+    }
+    .navBtn{
+        padding: .6em 1.2em;
     }
 }
 

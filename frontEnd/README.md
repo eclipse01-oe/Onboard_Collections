@@ -25,7 +25,7 @@ git push -u origin main
 
 git status: to show the update
 git add .
-git commit -m 'commit comment'
+git commit -m 'adjust the signup and login buttons'
 git pull --rebase origin main
 git push origin main
 npm run build
