@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom';
 import { FaCartArrowDown, FaGooglePlus} from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 import { BiSolidHide, BiShow } from 'react-icons/bi';
@@ -40,7 +41,7 @@ const Login = () => {
             </div>
 
             <div>
-                <p>not a user yet? click <a href="/signup">here</a> to get started</p>
+                <p>not a user yet? click <Link to="/signup">here</Link> to get started</p>
             </div>
 
             <div>
