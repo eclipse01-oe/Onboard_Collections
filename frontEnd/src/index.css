@@ -50,6 +50,12 @@ button:focus-visible {
 .container{
   margin-left: 20vw !important;
 }
+.showFlex{
+  display: flex;
+}
+.hide{
+  display: none;
+}
 
 @media (prefers-color-scheme: light) {
   :root {

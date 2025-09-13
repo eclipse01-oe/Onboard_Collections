@@ -36,15 +36,18 @@ npm run deploy
 
 todo list:
 
-work on the navbar [✔️]
-work on the image size on smaller screen [✔️]
-work on the bottom bar [ ]
+complete the modal box and add animation to it both for suggestion and details []
+add animation to the navbar [✔️]
+work on the bottom bar [✔️]
+move to github [ ]
 
 things to add on the navbar:
 profile
 categories
-sell
 settings
+our services
+onboard your product
+contact us
 logout
 
 things to add on the bottom bar:

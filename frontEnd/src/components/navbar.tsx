@@ -1,34 +1,34 @@
 import React, { useRef, useState, useEffect } from "react"
+import { Link } from "react-router-dom"
 import List, {Img} from "./list"
 import styles from '../styles/navbar.module.css'
 import { listArray, bottomNavList } from '../assets/data/navData'
-import { FaRegUser } from 'react-icons/fa';
+import { FaCaretDown, FaRegUser } from 'react-icons/fa';
 import { FaCartArrowDown} from 'react-icons/fa';
 import { MdOutlineCancel } from 'react-icons/md';
 import { HiOutlineMenuAlt3 } from 'react-icons/hi';
+import { motion, AnimatePresence } from "framer-motion";
 
-const isLoggedIn = true;
+const isLoggedIn = false;
 const Navbar = () => {
 
     const [showMenu, setShowMenu] = useState(false)
-    
-    return (
-    <div className={styles.nav}>
+    const [windowSize, setWindowsize] = useState(window.innerWidth)
 
-        <div className={styles.logo}>
-            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                <FaCartArrowDown  className={styles.logoIcon}/>
-                <h3>OBC</h3>
-            </div>
-                
-            <div className={styles.menuBtnCon}>
-                <HiOutlineMenuAlt3 className={styles.menuBtn} onClick={()=>setShowMenu(true)}/>
-            </div>
-        </div>
-
+    useEffect(()=>{
+        const checkWindowSize = ()=> {
+            const windowWidth = window.innerWidth
+            setWindowsize(windowWidth)
+            windowWidth > 1000 && setShowMenu(false)
+        }
+        checkWindowSize()
+        window.addEventListener('resize', checkWindowSize)
         
+        return ()=>window.removeEventListener('resize', checkWindowSize)
+    }, [])
 
-        <div className={styles.sideNav + (showMenu? ` ${styles.showSideNav}`:'')}>
+    const sideBarContent = ()=>{
+        return(<>
             <div className={styles.navCloseBtn}>
                 <MdOutlineCancel className={styles.navCloseIcon} onClick={()=>setShowMenu(false)}/>
             </div>
@@ -45,8 +45,8 @@ const Navbar = () => {
                         </div>
                         :
                         <div className={styles.whenNoUser} style={{justifyContent: 'space-evenly'}}>
-                            <button className={`${styles.navLoginBtn} ${styles.navBtn}`}>Login</button>
-                            <button className={`${styles.navSignupBtn} ${styles.navBtn}`}>Sign Up</button>
+                           <Link to='/login'><button className={`${styles.navLoginBtn} ${styles.navBtn}`}>Login</button></Link>
+                            <Link to='/signup'><button className={`${styles.navSignupBtn} ${styles.navBtn}`}>Sign Up</button></Link>
                         </div>}
                 </div>
                     
@@ -55,28 +55,78 @@ const Navbar = () => {
                     
             {listArray && listArray.length > 0 &&(
                 <ul >
-                    {listArray?.map(a=><List key={a.id} {...a}/>)}
+                    {listArray?.map((a, i)=><List key={i} {...a}/>)}
                     {!isLoggedIn ? '' : <List listItem='Logged Out'/>}
                 </ul>
             )}
+        </>)
+    }
+    
+    return (
+    <div className={styles.nav}>
 
+        <div className={styles.logo}>
+            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                <FaCartArrowDown  className={styles.logoIcon}/>
+                <h3>OBC</h3>
+            </div>
+                
+            <div className={styles.menuBtnCon}>
+                <HiOutlineMenuAlt3 className={styles.menuBtn} onClick={()=>setShowMenu(true)}/>
+            </div>
         </div>
+
+       { windowSize <= 1000 ? 
+        <AnimatePresence>
+            {showMenu && (
+            <motion.div 
+                className={styles.sideNav + (showMenu? ` ${styles.showSideNav}`:'')}
+                initial={{x: '100%'}}
+                animate={{x: '0%'}}
+                exit={{x: '100%'}}
+                transition={{duration: .7}}
+            >
+                {sideBarContent()}
+            </motion.div>)}
+        </AnimatePresence> : 
+
+        <div className={styles.sideNav} style={{display: 'flex'}}>
+                {sideBarContent()}
+        </div>
+        }
+        
     </div>);
 }
 
 
 const BottomNav = () => {
     
-    return (
+    return (<div className={styles.bottomNavCon} >
+        <div className={styles.bottomNavProfile}>
+            <FaCartArrowDown style={{
+                height: '100%', width: '80%', color: 'blue',
+            
+                }}
+            />
+        </div>
         <div className={styles.bottomNav}>
+            
             {bottomNavList && bottomNavList.length > 0 &&(
                 <ul>
-                    {bottomNavList?.map((a, i) => <List key={i} {...a}/>)}
+                    {bottomNavList?.map((a, i) => <List key={i}
+                        id={a.id} className={a.id && styles.bottomList}
+                        listIcon={a.listIcon}
+                        listIconStyle={{width: '100%', height: '100%'}}
+                        listConStyle={{
+                            display: 'flex', justifyContent: 'center', alignItems: 'center',
+                            width: '150%', height: '100%'
+                        }}
+                    />)}
                 </ul>
             )
             }
         </div>
-    );
+    </div>);
 }
 
 export default Navbar

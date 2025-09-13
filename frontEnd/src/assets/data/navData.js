@@ -1,34 +1,58 @@
+import { TbHome } from 'react-icons/tb';
+import { FaExternalLinkAlt } from 'react-icons/fa';
+import { MdFavoriteBorder, MdOutlineNotificationsActive } from 'react-icons/md';
+
 export const listArray = [
     {
-        to: '',
-        listItem: 'Categories'
-    },
-
-    {
-        to: '',
-        listItem: 'Sell'
-    },
-    {
-        to: '',
-        listItem: 'Settings'
-    }
-]
-
-export const bottomNavList = [
-    {
-        to: '',
+        to: '/',
         listItem: 'Home'
     },
     {
         to: '',
-        listItem: 'Cart'
+        listItem: 'Categories'
     },
     {
         to: '',
-        listItem: 'Track Product'
+        listItem: 'Settings'
     },
     {
         to: '',
-        listItem: 'Favorite'
-    }
-]
+        listItem: 'Our services'
+    },
+    {
+        to: '',
+        listItem: 'Onboard your product'
+    },
+    {
+        to: '',
+        listItem: 'Contact us'
+    },
+];
+
+export const bottomNavList = [
+    {
+        to: '',
+        listItem: 'Home',
+        listIcon: TbHome,
+    },
+    {
+        to: '',
+        listItem: 'Track',
+        listIcon: FaExternalLinkAlt,
+    },
+    {
+        id: 'profile',
+        to: '',
+        listItem: '',
+    },
+    {
+        to: '',
+        listItem: 'Favorite',
+        listIcon: MdFavoriteBorder,
+    },
+    {
+        to: '',
+        listItem: 'Notification',
+        listIcon: MdOutlineNotificationsActive,
+    },
+];
