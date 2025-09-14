@@ -12,16 +12,16 @@
 .logoIcon{
     height: 30px;
     width: 30px;
-    color: rgb(14, 112, 232);
+    color: #16e416;
     margin: 5px;
 }
 
 .menuBtn, .navCloseIcon{
     height: 30px;
     width: 30px;
-    color: rgb(231, 235, 240);
     margin: 5px;
 }
+
 .navCloseBtn{
     display: none;
     justify-content: right;
@@ -39,9 +39,11 @@
     height: 100vh;
     top: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.333);
+    background-color: #26242475;
     border-radius: 0 8px 0 0;
-    border-right: 2px rgba(41, 137, 255, 0.202) solid;
+    border-right: .3px #16e416c1 solid;
+    box-shadow: 0 5px 10px #16e416fb;
+    z-index: 9;
 }
 
 ul{
@@ -71,27 +73,37 @@ ul{
     mask: radial-gradient(circle 30px at 50% -20%, transparent 0 40px, black 40px);
     mask-repeat: no-repeat;
     mask-size: cover;
+    -moz-mask: radial-gradient(circle 30px at 50% -20%, transparent 0 40px, black 40px);
+    -moz-mask-repeat: no-repeat;
+    -moz-mask-size: cover;
     -webkit-mask: radial-gradient(circle 30px at 50% -20%, transparent 0 40px, black 40px);
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-size: cover;
     overflow: visible;
 }
 .bottomNavProfile {
-  height: 55px;
-  width: 80px;
-  border-radius: 50%;
-  position: absolute;
-  top: -32px;
-  left: 77%;
-  transform: translateX(-50%);
-  z-index: 2;
+    height: 65px;
+    width: 65px;
+    border-radius: 50%;
+    position: absolute;
+    top: -55px;
+    display: flex;
+    left: 76.8%;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 8px 5px 5px;
+    transform: translateX(-49%);
+    z-index: 2;
+    box-shadow: 0 0 10px #16e416b1;
+    background-color: rgba(0, 0, 0, 0.608);
+    backdrop-filter: blur(1px);
 }
 .bottomNav ul{
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex: 1;
-    background-color: rgba(14, 112, 232, 0.937);
+    background-color: #16e416ee;
     backdrop-filter: blur(100px);
     color: aliceblue;
     flex-direction: row;
@@ -144,36 +156,47 @@ ul{
     margin: 20px 0;
 }
 .navSignupBtn{
-    background-color: rgba(14, 112, 232, 0.665);
+    background-color: #16e416;
 }
 .navLoginBtn{
     background-color: rgba(0, 0, 0, 0);
     color: whitesmoke;
+    border: 2px solid white;
+}
+.navBtn:hover{
+    background-color: #16e416;
+    box-shadow: 0 0 10px #16e416;
+    transition: ease-in-out 0.3;
 }
 
 
 @media (prefers-color-scheme: light){
-.navSignupBtn{
-    background-color: #2c4962eb;
-    color: whitesmoke;
-}
-.navLoginBtn{
-    color: #2c4962eb;
-}
-.navSignupBtn:hover{
-    color: #2c4962eb;
-}
-.navLoginBtn{
-    background-color: rgba(0, 0, 0, 0);
-    color: #2c4962eb;
-}
-.navBtn:hover{
-    background-color: #263d5100;
-}
-.bottomNav ul{
-    background-color: #2c4962eb;
-    backdrop-filter: blur(100px);
-}
+
+    .navLoginBtn{
+        color: #2c4962eb;
+        border: none;
+    }
+    .navSignupBtn:hover{
+        color: #2c4962eb;
+    }
+    .navLoginBtn{
+        background-color: rgba(0, 0, 0, 0);
+        color: #2c4962eb;
+    }
+    .navBtn:hover{
+        background-color: #263d5100;
+        border: 2px solid #16e416 ;
+    }
+    .bottomNav ul{
+        background-color: #16e416f1;
+        backdrop-filter: blur(100px);
+    }
+
+    .bottomNavProfile{
+        background-color: rgba(255, 255, 255, 0.53);
+        backdrop-filter: blur(1px);
+    }
+
 }
 
 @media (max-width: 1000px) {
@@ -187,9 +210,10 @@ ul{
         height: 100vh;
         top: 0;
         left: 60vw;
-        background-color: #213547;
+        background-color: #181717;
         border-radius:  8px 0 0 8px;
-        border-left: 2px rgba(41, 137, 255, 0.202) solid;
+        border-left: .5px #16e4163c solid;
+        box-shadow: none;
     }
 
     .showSideNav{
@@ -202,7 +226,7 @@ ul{
         position: fixed;
         height: 55px;
         top: 0;
-        background-color: #262424e4;
+        background-color: #08080891;
         backdrop-filter: blur(20px);
         z-index: 3;
     }
@@ -240,7 +264,14 @@ ul{
         width: 100%;
     }
     .bottomNavProfile {
-        left: 50.3%;
+        left: 50%;
+        transform: translateX(-50.9%);
+    }
+
+    .bottomNavProfile {
+        height: 60px;
+        width: 60px;
+        top: -50px;
     }
 
 }
@@ -252,13 +283,5 @@ ul{
     }
     .navBtn{
         padding: .6em 1.2em;
-    }
-}
-
-@media (max-width: 600px) {
-    .bottomNavProfile {
-        height: 50px;
-        width: 80px;
-        top: -30px;
     }
 }

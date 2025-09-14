@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #08080800;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -42,11 +42,6 @@ button {
 button:hover {
   border-color: #ffff;
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
 .container{
   margin-left: 20vw !important;
 }
@@ -74,6 +69,12 @@ button:focus-visible {
   }
 }
 
+@media (max-width: 1000px) {
+  .container{
+    margin-left: auto !important;
+  }
+} 
+
 @media (max-width: 800px) {
   h1{
     font-size: 2rem !important;
@@ -83,8 +84,3 @@ button:focus-visible {
   }
 }
 
-@media (max-width: 1000px) {
-  .container{
-    margin-left: auto !important;
-  }
-} 

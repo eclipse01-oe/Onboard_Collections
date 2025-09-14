@@ -21,9 +21,8 @@
 .onboardCart{
   width: 100px;
   height: 50px;
-  color: #747bff;
-  background-color: white;
-  border-bottom: 2px #747bff solid;
+  background-color: #16e416;
+  border-bottom: 3px #eeee solid;
 }
 .formContainer p{
   opacity: .7;
@@ -68,6 +67,14 @@
   font-weight: 800;
 }
 
+.formContainer button{
+  background-color: #16e416;
+  font-weight: 700;
+}
+.formContainer button:hover{
+  background-color: inherit;
+}
+
 .googleAut {
   display: flex;
   flex-direction: column;
@@ -85,13 +92,34 @@
   border: 1px solid #ffffff;
   background-color: initial;
 }
+
+.pDiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
 @media (prefers-color-scheme: light){
+  .formContainer button{
+    color: #213547;
+  }
+
+  .onboardCart{
+    color: white;
+    border-bottom-color: white;
+  }
+
+  .formContainer button:hover{
+    border: 2px solid #16e416;
+  }
+
   .googleAut:hover{
-  border: 2px solid #263d51ca;
-}
-.formContainer{
-  background-color: #263d5114;
-}
+    border: 2px solid #16e416;
+  }
+  .formContainer{
+    background-color: #263d5114;
+  }
 }
 
 @media (max-width: 800px) {

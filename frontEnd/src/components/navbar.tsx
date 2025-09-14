@@ -104,7 +104,7 @@ const BottomNav = () => {
     return (<div className={styles.bottomNavCon} >
         <div className={styles.bottomNavProfile}>
             <FaCartArrowDown style={{
-                height: '100%', width: '80%', color: 'blue',
+                height: '100%', width: '60%', color: 'green',
             
                 }}
             />

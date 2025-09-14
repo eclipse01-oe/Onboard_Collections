@@ -23,9 +23,9 @@ git push -u origin main
 
 ## update git repo
 
-git status: to show the update
 git add .
-git commit -m 'adjust the signup and login buttons'
+git status
+git commit -m '2nd change to companies color (green and white)'
 git pull --rebase origin main
 git push origin main
 npm run build
