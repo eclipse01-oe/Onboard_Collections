@@ -25,7 +25,7 @@ git push -u origin main
 
 git add .
 git status
-git commit -m 'ADDING FAVORITE ICON AND DETAILS PAGE'
+git commit -m '2nd ADDING FAVORITE ICON AND DETAILS PAGE'
 git pull --rebase origin main
 git push origin main
 npm run build
