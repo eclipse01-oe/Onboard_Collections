@@ -1,9 +1,9 @@
 import React, {useEffect, useState, useRef, forwardRef, useImperativeHandle} from "react"
 import {Img} from './list'
-import { MdAddShoppingCart } from 'react-icons/md';
+
 
 type ProductCardProps = {
-    src: string
+    src?: string
     name?: string
     desc?: string
     rating?: number
@@ -14,7 +14,12 @@ type ProductCardProps = {
     detailsDivProps?: React.HTMLAttributes<HTMLDivElement>
     nameDivProps?: React.HTMLAttributes<HTMLDivElement>
     buttonProps?: React.ButtonHTMLAttributes<HTMLButtonElement>
+    viewDetails?: React.HTMLAttributes<HTMLDivElement>
     iconProps?: React.SVGProps<SVGSVGElement>
+    children?: React.ReactNode
+    Icon?: React.ElementType
+    FavIcon?: React.ElementType
+    favIconProps?: React.SVGProps<SVGSVGElement>
 }
 
 export type ProductCardRef = {
@@ -22,9 +27,10 @@ export type ProductCardRef = {
     cartButtonRef?: HTMLButtonElement | null
 }
 
-const ProductCard = forwardRef<ProductCardRef, ProductCardProps>((p, ref) => {
+const Card = forwardRef<ProductCardRef, ProductCardProps>((p, ref) => {
     const { name, desc, rating, price, productDiv, imgDiv, imgProps,
-        src, detailsDivProps, nameDivProps, buttonProps, iconProps
+        Icon: Icon, FavIcon: FavIcon, src, detailsDivProps, nameDivProps,
+         buttonProps, iconProps, children, viewDetails, favIconProps
     } = p
 
     const cardRef = useRef<HTMLDivElement | null>(null)
@@ -38,24 +44,29 @@ const ProductCard = forwardRef<ProductCardRef, ProductCardProps>((p, ref) => {
     return (
         <div {...productDiv} ref={cardRef}>
             <div {...imgDiv}>
-               <Img {...imgProps} src={src}/>
+               {src && <Img {...imgProps} src={src}/>}
+               {FavIcon ? <FavIcon {...favIconProps} /> : null}
             </div>
             <div {...detailsDivProps}>
-                <div {...nameDivProps}>
+                <div {...viewDetails}>
+                    <div {...nameDivProps}>
                     <h3>{name ?? 'Name'}</h3>
                     <div>⭐{rating ?? 0}</div>
                 </div>
                 <p>{desc ?? 'No description'}</p>
                 <h4>{price ?? 0}</h4>
+                </div>
+                
                 <button ref={cartButtonRef} {...buttonProps}>
-                <h4>Add to cart</h4>
-                <MdAddShoppingCart {...iconProps}/>
-            </button>
+                    <h4>Add to cart</h4>
+                    {Icon ? <Icon {...iconProps} /> : null}
+                </button>
             </div>
-            
+            {children}
         </div>
     )
 })
-ProductCard.displayName = 'ProductCard'
+Card.displayName = 'Card'
 
-export default ProductCard
+export default 
+Card

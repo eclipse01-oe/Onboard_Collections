@@ -25,29 +25,19 @@ git push -u origin main
 
 git add .
 git status
-git commit -m '2nd change to companies color (green and white)'
+git commit -m 'ADDING FAVORITE ICON AND DETAILS PAGE'
 git pull --rebase origin main
 git push origin main
 npm run build
 npm run deploy
 
 todo list:
-- complete the modal box and add animation to it both for suggestion and details []
-- add animation to the navbar [✔️]
-- work on the bottom bar [✔️]
-- move to github [ ]
 
-things to add on the navbar:
-- profile
-- categories
-- settings
-- our services
-- onboard your product
-- contact us
-- logout
+- design the details page []
+- work on the add to cart button and page []
+- work on the favorite button and page[]
+- work on the tracking page []
+- work on the notification page []
+- move to github []
 
-things to add on the bottom bar:
-home
-cart
-track product
-favorite
+

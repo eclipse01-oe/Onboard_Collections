@@ -196,6 +196,9 @@ ul{
         background-color: rgba(255, 255, 255, 0.53);
         backdrop-filter: blur(1px);
     }
+    .sideNav{
+           background-color: #69696933; 
+        }
 
 }
 
