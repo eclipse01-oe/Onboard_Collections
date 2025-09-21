@@ -50,13 +50,14 @@ const Home = () => {
   const cartPos = useAppStore((s) => s.cartPos);
 
   const handleClick = (a: Product) => {
+    const screen = window.screen.width
     const ref = buttonRefs.current[a.id];
     if (!ref?.cartButtonRef || !cartPos) return;
 
     const rect = ref.cartButtonRef.getBoundingClientRect();
     const start = {
       x: rect.left + rect.width / 2,
-      y: rect.top - rect.height * 2 ,
+      y: screen >= 421 ?  rect.top - rect.height * 2 : rect.top - rect.height * 4 ,
     };
 
     setFlyingCarts((prev) => [
