@@ -50,7 +50,7 @@ const Home = () => {
   const cartPos = useAppStore((s) => s.cartPos);
 
   const handleClick = (a: Product) => {
-    const screen = window.screen.width
+    const screen = window.innerWidth
     const ref = buttonRefs.current[a.id];
     if (!ref?.cartButtonRef || !cartPos) return;
 

@@ -40,4 +40,3 @@ todo list:
 - work on the notification page []
 - move to github []
 
-
