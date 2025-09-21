@@ -57,7 +57,7 @@ const Home = () => {
     const rect = ref.cartButtonRef.getBoundingClientRect();
     const start = {
       x: rect.left + rect.width / 2,
-      y: screen >= 421 ?  rect.top - rect.height * 2 : rect.top - rect.height * 4 ,
+      y: screen >= 721 ?  rect.top - rect.height * 2 : rect.top - rect.height * 4 ,
     };
 
     setFlyingCarts((prev) => [
