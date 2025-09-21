@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef, forwardRef, useImperativeHandle} from "react"
+import React, {useRef, forwardRef, useImperativeHandle} from "react"
 import {Img} from './list'
 
 
@@ -17,6 +17,7 @@ type ProductCardProps = {
     viewDetails?: React.HTMLAttributes<HTMLDivElement>
     iconProps?: React.SVGProps<SVGSVGElement>
     children?: React.ReactNode
+    btnChildren?: React.ReactNode
     Icon?: React.ElementType
     FavIcon?: React.ElementType
     favIconProps?: React.SVGProps<SVGSVGElement>
@@ -30,7 +31,7 @@ export type ProductCardRef = {
 const Card = forwardRef<ProductCardRef, ProductCardProps>((p, ref) => {
     const { name, desc, rating, price, productDiv, imgDiv, imgProps,
         Icon: Icon, FavIcon: FavIcon, src, detailsDivProps, nameDivProps,
-         buttonProps, iconProps, children, viewDetails, favIconProps
+         buttonProps, iconProps, children, viewDetails, favIconProps, btnChildren
     } = p
 
     const cardRef = useRef<HTMLDivElement | null>(null)
@@ -43,6 +44,7 @@ const Card = forwardRef<ProductCardRef, ProductCardProps>((p, ref) => {
 
     return (
         <div {...productDiv} ref={cardRef}>
+            {children}
             <div {...imgDiv}>
                {src && <Img {...imgProps} src={src}/>}
                {FavIcon ? <FavIcon {...favIconProps} /> : null}
@@ -58,11 +60,11 @@ const Card = forwardRef<ProductCardRef, ProductCardProps>((p, ref) => {
                 </div>
                 
                 <button ref={cartButtonRef} {...buttonProps}>
-                    <h4>Add to cart</h4>
+                    {btnChildren}
                     {Icon ? <Icon {...iconProps} /> : null}
                 </button>
             </div>
-            {children}
+            
         </div>
     )
 })

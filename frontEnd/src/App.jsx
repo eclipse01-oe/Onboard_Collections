@@ -4,6 +4,8 @@ import Signup from './onboarding/signup'
 import Login from './onboarding/login'
 import Navbar, { BottomNav } from './components/navbar'
 import Home from './home/home'
+import Cart from './components/cart'
+import Favorite from './components/favorite'
 
 function AppContent() {
   const location = useLocation()
@@ -17,6 +19,8 @@ function AppContent() {
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path='/cart' element={<Cart />} />
+        <Route path='/favorite' element={<Favorite />} />
       </Routes>
 
       {!hideNav && <BottomNav />}

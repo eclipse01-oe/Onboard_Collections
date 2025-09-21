@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react"
+import React, { useRef, useState, useEffect, useLayoutEffect } from "react"
 import { Link } from "react-router-dom"
 import List, {Img} from "./list"
 import styles from '../styles/navbar.module.css'
@@ -8,6 +8,7 @@ import { FaCartArrowDown} from 'react-icons/fa';
 import { MdOutlineCancel } from 'react-icons/md';
 import { HiOutlineMenuAlt3 } from 'react-icons/hi';
 import { motion, AnimatePresence } from "framer-motion";
+import useAppStore from "./zustand"
 
 const isLoggedIn = false;
 const Navbar = () => {
@@ -100,20 +101,44 @@ const Navbar = () => {
 
 
 const BottomNav = () => {
+
+    const setCartPos = useAppStore(a => a.setCartPos)
+    const cartRef = useRef<HTMLDivElement>(null)
+
+    useLayoutEffect(() => {
+        const updatePos = () => {
+        if (cartRef.current) {
+            const rect = cartRef.current.getBoundingClientRect();
+            setCartPos?.({ x: rect.x , y: rect.y });
+        }
+    };
+
+        updatePos(); // run once on mount
+            window.addEventListener("resize", updatePos);
+            window.addEventListener("scroll", updatePos);
+
+        return () => {
+            window.removeEventListener("resize", updatePos);
+            window.removeEventListener("scroll", updatePos);
+        };
+    }, [setCartPos]);
+
+
     
     return (<div className={styles.bottomNavCon} >
-        <div className={styles.bottomNavProfile}>
-            <FaCartArrowDown style={{
+        <div className={styles.bottomNavProfile}  ref={cartRef}>
+            <Link to='/cart' style={{height: '100%', width: '100%', display: 'contents'}}>
+                <FaCartArrowDown style={{
                 height: '100%', width: '60%', color: 'green',
-            
-                }}
-            />
+                }} />
+            </Link>
         </div>
         <div className={styles.bottomNav}>
             
             {bottomNavList && bottomNavList.length > 0 &&(
                 <ul>
                     {bottomNavList?.map((a, i) => <List key={i}
+                        to={a.to}
                         id={a.id} className={a.id && styles.bottomList}
                         listIcon={a.listIcon}
                         listIconStyle={{width: '100%', height: '100%'}}

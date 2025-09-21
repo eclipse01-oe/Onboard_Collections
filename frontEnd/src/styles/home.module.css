@@ -4,6 +4,15 @@
     position: relative;
     flex-direction: column;
 }
+button:disabled{
+    background-color: #16e416;
+    color: whitesmoke;
+    cursor: default;
+}
+button:disabled:hover{
+    border: 0;
+    outline: 0;
+}
 .container{
     display: flex;
     flex-direction: column;
@@ -210,17 +219,28 @@
     border-radius: 20px 20px 0 0;
 }
 
+.cancleDiv{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    width: 100%;
+    background-color: rgba(102, 101, 101, 0.334);
+    backdrop-filter: blur(20px);
+}
 .detailsCancle{
-    height: 4%;
-    width: 10%;
-    margin-left: 92%;
+    width: 3%;
+    height: 100%;
+    margin: 1% 0;
 }
 .detailsSlider{
+    display: flex;
     height: 50%;
     overflow-x: auto;
     scrollbar-width: thin; 
     scroll-behavior: smooth;
-    scrollbar-color: transparent;
 }
 
 .detailsSlider::-webkit-scrollbar {
@@ -259,6 +279,7 @@
     width: 97.5%;
     height: 2.5rem;
     background-color: #16e416;
+    margin-top: 20px;
 }
 
 .detailsPageContent table h4, .detailsPageContent table h2{

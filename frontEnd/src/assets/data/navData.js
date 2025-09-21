@@ -31,7 +31,7 @@ export const listArray = [
 
 export const bottomNavList = [
     {
-        to: '',
+        to: '/',
         listItem: 'Home',
         listIcon: TbHome,
     },
@@ -46,7 +46,7 @@ export const bottomNavList = [
         listItem: '',
     },
     {
-        to: '',
+        to: 'favorite',
         listItem: 'Favorite',
         listIcon: MdFavoriteBorder,
     },

@@ -1,13 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { clothes, shoes, phones } from "../assets/data/goodsCardData";
-import Card from "../components/card";
+import Card, { ProductCardRef } from "../components/card";
 import Modal from "../components/modal";
 import styles from "../styles/home.module.css";
 import { FaSearch } from "react-icons/fa";
-import { MdOutlineCancel, MdAddShoppingCart, MdFavoriteBorder, MdFavorite } from 'react-icons/md';
+import {
+  MdOutlineCancel,
+  MdAddShoppingCart,
+  MdFavoriteBorder,
+  MdFavorite,
+} from "react-icons/md";
 import { AnimatePresence, motion } from "framer-motion";
 import Slider from "../components/slider";
 import { Img } from "../components/list";
+import useAppStore from "../components/zustand";
 
 const categories = [
   { title: "Clothes", cat: clothes },
@@ -18,7 +24,7 @@ const categories = [
 type Product = {
   about?: any;
   store?: any;
-  id?: number;
+  id: number;
   src?: string;
   price?: string;
   name?: string;
@@ -28,53 +34,75 @@ type Product = {
 };
 
 const Home = () => {
+  const buttonRefs = useRef<Record<number, ProductCardRef | null>>({});
   const [inputValue, setInputValue] = useState("");
   const [index, setIndex] = useState(0);
   const [card, setCard] = useState<Product | null>(null);
-  const [favorite, setFavorite] = useState(false)
+  const [flyingCarts, setFlyingCarts] = useState<
+    { id: number; start: { x: number; y: number }; end: { x: number; y: number } }[]
+  >([]);
 
-  const addFavorite = ()=>{
-    setFavorite(true)
-  }
+  const addToCart = useAppStore((s) => s.addToCart);
+  const cart = useAppStore((s) => s.cart);
+  const addToFav = useAppStore((s) => s.addToFav);
+  const removeFromFav = useAppStore((s) => s.removeFav);
+  const fav = useAppStore((s) => s.favorite);
+  const cartPos = useAppStore((s) => s.cartPos);
+
+  const handleClick = (a: Product) => {
+    const ref = buttonRefs.current[a.id];
+    if (!ref?.cartButtonRef || !cartPos) return;
+
+    const rect = ref.cartButtonRef.getBoundingClientRect();
+    const start = {
+      x: rect.left + rect.width / 2,
+      y: rect.top + rect.height / 2,
+    };
+
+    setFlyingCarts((prev) => [
+      ...prev,
+      { id: a.id, start, end: { x: cartPos.x, y: cartPos.y } },
+    ]);
+
+    addToCart(a);
+  };
 
   useEffect(() => {
-
-    document.body.style.overflow = card ? 'hidden' : 'auto'
+    document.body.style.overflow = card ? "hidden" : "auto";
 
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % phones.length);
     }, 3000);
 
     return () => clearInterval(interval);
-
-}, [phones.length, card]);
-
+  }, [phones.length, card]);
 
   return (
     <div className={styles.homeCon}>
       {/* Search Bar */}
       <div className={styles.searchCon}>
-
         <div className={styles.inputDiv}>
           <input
-          type="text"
-          placeholder="Search"
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-        />
-        <FaSearch style={{ height: "1.6rem", width: "1.6rem" }} 
+            type="text"
+            placeholder="Search"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+          />
+          <FaSearch
+            style={{ height: "1.6rem", width: "1.6rem" }}
             className={styles.inputIcon}
-        />
+          />
         </div>
-        
-        <Modal isOpen={true} onClose={() => {}} 
-            children={
-                <div className={styles.modal}>
-                    <button>Close</button>
-                </div>
-            }
-        />
 
+        <Modal
+          isOpen={true}
+          onClose={() => {}}
+          children={
+            <div className={styles.modal}>
+              <button>Close</button>
+            </div>
+          }
+        />
       </div>
 
       {/* Slider */}
@@ -85,22 +113,21 @@ const Home = () => {
         viewport={{ once: false, amount: 0.1 }}
       >
         <div className={styles.sliderCon}>
-
           <div className={styles.sliderTitle}>
             <h3>Discount sales for the week</h3>
           </div>
 
           <div className={styles.sliderDiv}>
-          <AnimatePresence mode="sync">
-            {phones.map((p,i)=>
-              <Slider 
-                key={i}
-                content={<Img src={p.src} className={styles.sliderImg}/>}
-                animatePos={-index * 35}
-              />
-            )}
-          </AnimatePresence>
-        </div> 
+            <AnimatePresence mode="sync">
+              {phones.map((p, i) => (
+                <Slider
+                  key={i}
+                  content={<Img src={p.src} className={styles.sliderImg} />}
+                  animatePos={-index * 35}
+                />
+              ))}
+            </AnimatePresence>
+          </div>
         </div>
       </motion.div>
 
@@ -111,7 +138,7 @@ const Home = () => {
             key={i}
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: i * 0.1 }}
+            transition={{ duration: 0.6, delay: i * 0.1,  }}
             viewport={{ once: false, amount: 0.1 }}
           >
             {/* Title */}
@@ -127,15 +154,16 @@ const Home = () => {
 
             {/* Cards */}
             <div className={styles.cardContainer}>
-              {c.cat.map((a, j) => (
+              {c.cat.map((a) => (
                 <motion.div
-                  key={j}
+                  key={a.id}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: j * 0.1 }}
-                  viewport={{ once: false}}
+                  transition={{ duration: 0.5 }}
+                  viewport={{ once: false }}
                 >
                   <Card
+                    ref={(el) => (buttonRefs.current[a.id] = el)}
                     src={a.src}
                     name={a.name}
                     desc={a.desc}
@@ -146,17 +174,34 @@ const Home = () => {
                       className: styles.productCard,
                     }}
                     Icon={a.icon}
-                    imgDiv={{ className: styles.imgDiv}}
+                    imgDiv={{ className: styles.imgDiv }}
                     imgProps={{ className: styles.img }}
                     detailsDivProps={{ className: styles.detailsDiv }}
-                    viewDetails={{ className: styles.viewDetails, onClick:()=>setCard(a) }}
+                    viewDetails={{
+                      className: styles.viewDetails,
+                      onClick: () => setCard(a),
+                    }}
                     nameDivProps={{ className: styles.nameDiv }}
-                    buttonProps={{ className: styles.button }}
+                    buttonProps={{
+                      className: styles.button,
+                      disabled: cart.some((i) => i.id === a.id),
+                      onClick: () => handleClick(a),
+                    }}
+                    btnChildren={
+                      cart.find((i) => i.id === a.id) ? (
+                        <h4>In cart</h4>
+                      ) : (
+                        <h4>Add to cart</h4>
+                      )
+                    }
                     iconProps={{ className: styles.icon }}
-                    FavIcon={favorite ? MdFavorite : MdFavoriteBorder}
-                    favIconProps={{ className: styles.favIcon,
-                    onClick: favorite ? ()=>setFavorite(false) : addFavorite
-                  }}
+                    FavIcon={fav[a.id] ? MdFavorite : MdFavoriteBorder}
+                    favIconProps={{
+                      className: styles.favIcon,
+                      onClick: fav[a.id]
+                        ? () => removeFromFav(a.id)
+                        : () => addToFav(a),
+                    }}
                   />
                 </motion.div>
               ))}
@@ -164,83 +209,177 @@ const Home = () => {
           </motion.div>
         ))}
       </div>
-      
-      {/* details page */}
-    <AnimatePresence>
-      {card && (
-        
-        <motion.div
-        className={styles.detailsPageDiv}
-        initial={{y: '100%', opacity: 0}}
-        animate={{y: 0, opacity: 1}}
-        exit={{y:"100%", opacity: 0}}
-        transition={{duration: .8}}
-        >
-          {/* Render selected product details */}
-          <MdOutlineCancel onClick={() => setCard(null)} className={styles.detailsCancle}/>
-            <Slider 
-              drag="x" dragConstraints={{ left: 0, right: 0 }}
-              className={styles.detailsSlider}
-              style={{height: '50%', overflowX: 'auto'}}
-                
-              content={<><Img src={card.src} className={styles.sliderImg}
-                  style={{width:' 70%', height: '100%', margin: '10px'}}
-                />
-                
-                <Img src={card.src} className={styles.sliderImg}
-                  style={{width:' 70%', height: '100%', margin: '10px'}}
-                />
-                
-                <Img src={card.src} className={styles.sliderImg}
-                  style={{width:' 70%', height: '100%', margin: '10px'}}
-                />
 
-                <Img src={card.src} className={styles.sliderImg}
-                  style={{width:'70%', height: '100%', margin: '10px'}}
-                />
+      {/* 🔥 Global flying cart animations */}
+      <AnimatePresence>
+        {flyingCarts.map((anim) => (
+          <motion.span
+            key={anim.id}
+            initial={{
+              x: anim.start.x,
+              y: anim.start.y,
+              opacity: 1,
+              scale: 1,
+            }}
+            animate={{
+              x: anim.end.x,
+              y: anim.end.y,
+              opacity: .2,
+              scale: .4,
+            }}
+            transition={{ duration: 0.8 }}
+            onAnimationComplete={() =>
+              setFlyingCarts((prev) => prev.filter((f) => f !== anim))
+            }
+            style={{
+              position: "fixed",
+              zIndex: 9999,
+              pointerEvents: "none",
+            }}
+          >
+            <MdAddShoppingCart style={{ color: "green", fontSize: "24px" }} />
+          </motion.span>
+        ))}
+      </AnimatePresence>
+
+      {/* Details page */}
+      <AnimatePresence>
+        {card && (
+          <motion.div
+            className={styles.detailsPageDiv}
+            initial={{ y: "100%", opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: "100%", opacity: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className={styles.cancleDiv}>
+              <MdOutlineCancel
+                onClick={() => setCard(null)}
+                className={styles.detailsCancle}
+              />
+            </div>
+            
+            <Slider
+              drag="x"
+              dragConstraints={{ left: 100, right: 100 }}
+              className={styles.detailsSlider}
+              content={
+                <>
+                  <Img
+                    src={card.src}
+                    className={styles.sliderImg}
+                    style={{
+                      width: "70%",
+                      height: "100%",
+                      margin: "10px",
+                    }}
+                  />
+                  <Img
+                    src={card.src}
+                    className={styles.sliderImg}
+                    style={{
+                      width: "70%",
+                      height: "100%",
+                      margin: "10px",
+                    }}
+                  />
+                  <Img
+                    src={card.src}
+                    className={styles.sliderImg}
+                    style={{
+                      width: "70%",
+                      height: "100%",
+                      margin: "10px",
+                    }}
+                  />
+                  <Img
+                    src={card.src}
+                    className={styles.sliderImg}
+                    style={{
+                      width: "70%",
+                      height: "100%",
+                      margin: "10px",
+                    }}
+                  />
                 </>
               }
-                
-              />
-          <div className={styles.detailsPageContent}>
-            <div className={styles.detailsFav_Name}>
+            />
+            <div className={styles.detailsPageContent}>
+              <div className={styles.detailsFav_Name}>
+                <h2>{card.name}</h2>
+                {!fav[card.id] ? (
+                  <MdFavoriteBorder
+                    style={{
+                      height: "20px",
+                      width: "20px",
+                      color: "red",
+                      cursor: "pointer",
+                    }}
+                    onClick={() => addToFav(card)}
+                  />
+                ) : (
+                  <MdFavorite
+                    style={{
+                      height: "20px",
+                      width: "20px",
+                      color: "red",
+                      cursor: "pointer",
+                    }}
+                    onClick={() => removeFromFav(card.id)}
+                  />
+                )}
+              </div>
+              <table>
+                <tbody>
+                  {card.rating && (
+                    <tr>
+                      <td>
+                        <h4>Rating:</h4>
+                      </td>
+                      <td>{card.rating}⭐</td>
+                    </tr>
+                  )}
+                  {card.about && (
+                    <tr>
+                      <td>
+                        <h4>About: </h4>
+                      </td>
+                      <td>{card.about}</td>
+                    </tr>
+                  )}
+                  {card.desc && (
+                    <tr>
+                      <td>
+                        <h4>desc: </h4>
+                      </td>
+                      <td>{card.desc}</td>
+                    </tr>
+                  )}
+                  {card.store && (
+                    <tr>
+                      <td>
+                        <h4>store: </h4>
+                      </td>
+                      <td>{card.store}</td>
+                    </tr>
+                  )}
+                </tbody>
+                <tfoot>
+                  <h2>{card.price}</h2>
+                </tfoot>
+              </table>
 
-              <h2>{card.name} </h2>
-              { !favorite ?
-                <MdFavoriteBorder style={{height: '20px', width: '20px', color: 'red', cursor: 'pointer'}} 
-                onClick={addFavorite}/> :
-                <MdFavorite style={{height: '20px', width: '20px', color: 'red', cursor: 'pointer'}}
-                onClick={()=>setFavorite(false)}/> 
-              }
-              
+              <button
+                disabled={cart.some((i) => i.id === card.id)}
+                onClick={() => addToCart(card)}
+              >
+                {cart.some((i) => i.id === card.id) ? "In cart" : "Add to cart"}
+                <MdAddShoppingCart />
+              </button>
             </div>
-          <table>
-            <tbody>
-              {card.rating && <tr>
-              <td><h4>Rating:</h4></td>
-              <td>{card.rating}⭐</td>
-            </tr>}
-            {card.about && <tr>
-              <td><h4>About: </h4></td>
-              <td>{card.about}</td>
-            </tr>}
-            {card.desc && <tr>
-              <td><h4>desc: </h4></td>
-               <td>{card.desc}</td>
-            </tr>}
-            
-            {card.store && <tr>
-              <td><h4>store: </h4></td>
-              <td>{card.store}</td>
-            </tr>}
-            </tbody>
-            <tfoot><h2>{card.price}</h2></tfoot>
-          </table>
-          
-          <button>Add to cart <MdAddShoppingCart/></button>
-        </div>
-      </motion.div>
-      )}</AnimatePresence>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

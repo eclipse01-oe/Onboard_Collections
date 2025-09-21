@@ -67,7 +67,7 @@ const randomRating = () => {
 
 export const shoes = [
     {
-        id: 1, src: 'photos/canvas.webp',
+        id: 7, src: 'photos/canvas.webp',
         price: priceInCurrency('en-NG', 'NGN').format(randomPrice()),
         name: 'Canvas', desc: `cool canvas for all to wear`, rating:  randomRating(),
         icon: MdAddShoppingCart
@@ -75,7 +75,7 @@ export const shoes = [
     },
 
     {
-        id: 2, src: 'photos/easefoot.webp',
+        id: 8, src: 'photos/easefoot.webp',
         price: priceInCurrency('en-NG', 'NGN').format(randomPrice()),
         name: 'Ease Foot', desc: `Easy foot wear for aall outdoors 
         movment`, rating:  randomRating(),
@@ -83,14 +83,14 @@ export const shoes = [
     },
 
     {
-        id: 3, src: 'photos/moccasin.webp',
+        id: 9, src: 'photos/moccasin.webp',
         price: priceInCurrency('en-NG', 'NGN').format(randomPrice()),
         name: 'Moccasin', desc: `Fashonable men's foot wear and shoe for`, rating:  randomRating(),
         icon: MdAddShoppingCart
     },
 
     {
-        id: 4, src: 'photos/timber.webp',
+        id: 10, src: 'photos/timber.webp',
         price: priceInCurrency('en-NG', 'NGN').format(randomPrice()),
         name: 'Timber Land', desc: `Strong timber land shoes, made from 
         timber strong and long lasting`, rating:  randomRating(),
@@ -98,7 +98,7 @@ export const shoes = [
     },
 
     {
-        id: 5, src: 'photos/woodland_outdoor.webp',
+        id: 11, src: 'photos/woodland_outdoor.webp',
         price: priceInCurrency('en-NG', 'NGN').format(randomPrice()),
         name: 'Woodland', desc: `Strong, long lasting, fashionable men's 
         shoes for all out doors activities`, rating:  randomRating(),
@@ -106,7 +106,7 @@ export const shoes = [
     },
 
     {
-        id: 6, src: 'photos/womenshoes.webp',
+        id: 12, src: 'photos/womenshoes.webp',
         price: priceInCurrency('en-NG', 'NGN').format(randomPrice()),
         name: 'slick shoe', desc: `Easy foot wear and shoe for women `, rating:  randomRating(),
         icon: MdAddShoppingCart
@@ -116,42 +116,42 @@ export const shoes = [
 
 export const phones = [
     {
-        id: 1, src: 'photos/google_pixel_5.webp',
+        id: 13, src: 'photos/google_pixel_5.webp',
         price: priceInCurrency('en-NG', 'NGN').format(randomPrice()),
         name: 'Google pixel 5', desc: `Google developed phone`, rating:  randomRating(),
         icon: MdAddShoppingCart
     },
 
     {
-        id: 2, src: 'photos/google_pixel_8.webp',
+        id: 14, src: 'photos/google_pixel_8.webp',
         price: priceInCurrency('en-NG', 'NGN').format(randomPrice()),
         name: 'Google pixel 8', desc: `Google developed phone`, rating:  randomRating(),
         icon: MdAddShoppingCart
     },
 
     {
-        id: 3, src: 'photos/iphone13.webp',
+        id: 15, src: 'photos/iphone13.webp',
         price: priceInCurrency('en-NG', 'NGN').format(randomPrice()),
         name: 'Iphone 13', desc: `Apple developed phone`, rating:  randomRating(),
         icon: MdAddShoppingCart
     },
 
     {
-        id: 4, src: 'photos/iphone15.webp',
+        id: 16, src: 'photos/iphone15.webp',
         price: priceInCurrency('en-NG', 'NGN').format(randomPrice()),
         name: 'Iphone 15', desc: `Apple developed phone`, rating:  randomRating(),
         icon: MdAddShoppingCart
     },
 
     {
-        id: 5, src: 'photos/samsung_galaxy_s20_ultra.webp',
+        id: 17, src: 'photos/samsung_galaxy_s20_ultra.webp',
         price: priceInCurrency('en-NG', 'NGN').format(randomPrice()),
         name: 'samsung galaxy s20 ultra', desc: `Samsung galaxies phones`, rating:  randomRating(),
         icon: MdAddShoppingCart
     },
 
     {
-        id: 6, src: 'photos/samsung_galaxy_s6.webp',
+        id: 18, src: 'photos/samsung_galaxy_s6.webp',
         price: priceInCurrency('en-NG', 'NGN').format(randomPrice()),
         name: 'samsung galaxy s6', desc: `Samsung galaxies phones`, rating:  randomRating(),
         icon: MdAddShoppingCart
