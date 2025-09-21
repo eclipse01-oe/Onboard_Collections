@@ -56,7 +56,7 @@ const Home = () => {
     const rect = ref.cartButtonRef.getBoundingClientRect();
     const start = {
       x: rect.left + rect.width / 2,
-      y: rect.top + rect.height / 2,
+      y: rect.top - rect.height * 2 ,
     };
 
     setFlyingCarts((prev) => [
@@ -222,12 +222,11 @@ const Home = () => {
               scale: 1,
             }}
             animate={{
-              x: anim.end.x,
-              y: anim.end.y,
-              opacity: .2,
-              scale: .4,
+              x: [anim.start.x, anim.start.x, anim.end.x],
+              y: [anim.start.y, anim.start.y - 10, anim.end.y],
+              scale: [1, 1.2, 1], opacity: [1, 1, anim.end.y / 100]
             }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 2, times: [0, 0.8, 1], ease: 'circInOut' }}
             onAnimationComplete={() =>
               setFlyingCarts((prev) => prev.filter((f) => f !== anim))
             }
@@ -260,8 +259,6 @@ const Home = () => {
             </div>
             
             <Slider
-              drag="x"
-              dragConstraints={{ left: 100, right: 100 }}
               className={styles.detailsSlider}
               content={
                 <>

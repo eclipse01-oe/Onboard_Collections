@@ -400,6 +400,7 @@ button:disabled:hover{
         margin-top: 15%;
         padding-top: 0;
     }
+    
 }
 
 @media (max-width: 630px){
@@ -426,6 +427,7 @@ button:disabled:hover{
         margin-top: 4.3rem;
         margin-right: 8%;
     }
+    
 }
 
 
@@ -444,11 +446,10 @@ button:disabled:hover{
     .sliderCon{
         margin-top: 18%;
     }
-
     .detailsCancle{
-        margin-left: 90%;
+        width: 5%;
+        margin: 1.2%;
     }
-
 }
 
 @media (max-width: 420px){

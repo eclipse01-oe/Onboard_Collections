@@ -109,7 +109,7 @@ const BottomNav = () => {
         const updatePos = () => {
         if (cartRef.current) {
             const rect = cartRef.current.getBoundingClientRect();
-            setCartPos?.({ x: rect.x , y: rect.y });
+            setCartPos?.({ x: rect.x + rect.width / 2 , y: rect.y - rect.height + 20});
         }
     };
 

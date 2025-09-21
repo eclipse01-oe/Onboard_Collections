@@ -33,9 +33,9 @@ npm run deploy
 
 todo list:
 
-- design the details page []
+- design the details page [✔️]
 - work on the add to cart button and page []
-- work on the favorite button and page[]
+- work on the favorite button and page []
 - work on the tracking page []
 - work on the notification page []
 - move to github []
