@@ -57,7 +57,7 @@ const Cart = ()=>{
 
         {/* mapping the cart item */}
         {cart.length > 0 ? cart.map((item)=>{
-            const qnty = qty[item.id] || '1'
+            const qnty = qty[item.id] || ''
             const total = Number(parseFloat(item.price.replace(/[^0-9.]/g, "")))
             * Number(qnty)
 
@@ -76,8 +76,8 @@ const Cart = ()=>{
                             <div className={styles.productQuantity}>
                                 <label htmlFor={`qty-${item.id}`}>qty</label>
                                <input
-                                type="number" min='1' step='1'
-                                id={`qty-${item.id}`} value={qnty}
+                                type="number" min='1' step='1' max={item.qty ? item.qty : ''}
+                                placeholder='1' id={`qty-${item.id}`} value={qnty}
                                 onChange={(e)=>setQty((prev)=>({...prev, [item.id]: e.target.value}))}
                             /> 
                             </div>
