@@ -13,16 +13,7 @@ button:disabled:hover{
     border: 0;
     outline: 0;
 }
-.container{
-    display: flex;
-    flex-direction: column;
-    align-items: normal;
-    justify-content: center;
-    gap: 20px;
-    margin-left: 20vw;
-    padding: 10px 5vw;
-    padding-bottom: 50px;
-}
+
 .searchCon{
     background-color: #08080891;
     display: flex;
@@ -353,9 +344,7 @@ button:disabled:hover{
         display: flex;
         position: relative;
     }
-    .container{
-        margin-left: auto;
-    }
+   
     .searchCon{
         margin-left: auto;
         margin-bottom: 30px;
@@ -453,9 +442,7 @@ button:disabled:hover{
 }
 
 @media (max-width: 420px){
-    button{
-        font-size: .6rem;
-    }
+    
     .detailsPageContent button{
         font-size: .8rem;
     }
@@ -473,3 +460,8 @@ button:disabled:hover{
     }
 }
 
+@media (max-width: 345px) {
+    button{
+        font-size: .6rem;
+    }
+}

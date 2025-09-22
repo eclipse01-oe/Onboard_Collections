@@ -57,7 +57,7 @@ const Home = () => {
     const rect = ref.cartButtonRef.getBoundingClientRect();
     const start = {
       x: rect.left + rect.width / 2,
-      y: screen >= 800 ?  rect.top - rect.height * 2 : rect.top - rect.height * 4 ,
+      y: screen >= 800 ?  rect.top - rect.height * 2 : rect.top - rect.height * 4
     };
 
     setFlyingCarts((prev) => [
@@ -133,7 +133,7 @@ const Home = () => {
       </motion.div>
 
       {/* Categories */}
-      <div className={styles.container}>
+      <div className='container'>
         {categories.map((c, i) => (
           <motion.div
             key={i}
@@ -227,7 +227,7 @@ const Home = () => {
               y: [anim.start.y, anim.start.y - 10, anim.end.y],
               scale: [1, 1.2, 1], opacity: [1, 1, anim.end.y / 100]
             }}
-            transition={{ duration: 2, times: [0, 0.8, 1], ease: 'circInOut' }}
+            transition={{ duration: 1, times: [0, 0.5, 1], ease: 'circInOut' }}
             onAnimationComplete={() =>
               setFlyingCarts((prev) => prev.filter((f) => f !== anim))
             }

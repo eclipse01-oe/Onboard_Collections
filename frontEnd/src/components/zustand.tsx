@@ -33,7 +33,9 @@ const useAppStore = create<AppStore>()(
   persist(
     (set) => ({
       cart: [],
-      addToCart: (item) => set((s) => ({ cart: [...s.cart, item] })),
+        addToCart: (item) => set(s => ({
+            cart: [...s.cart, item] 
+        })),
       removeCart: (id) =>
         set((s) => ({ cart: s.cart.filter((i) => i.id !== id) })),
 
