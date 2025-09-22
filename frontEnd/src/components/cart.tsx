@@ -59,7 +59,7 @@ const Cart = ()=>{
         {cart.length > 0 ? cart.map((item)=>{
             const qnty = qty[item.id] || ''
             const total = Number(parseFloat(item.price.replace(/[^0-9.]/g, "")))
-            * Number(qnty)
+            * (qnty === '' ? 1 : Number(qnty))
 
             return (<>
                 <div style={{marginBottom: '10%'}}>
