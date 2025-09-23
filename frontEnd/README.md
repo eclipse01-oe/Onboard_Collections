@@ -25,7 +25,7 @@ git push -u origin main
 
 git add .
 git status
-git commit -m 'working on fav page, and cart page'
+git commit -m 'working on fav page, and cart page, complete'
 git pull --rebase origin main
 git push origin main
 npm run build
@@ -35,7 +35,7 @@ todo list:
 
 - design the details page [✔️]
 - work on the add to cart button and page [✔️]
-- work on the favorite button and page []
+- work on the favorite button and page [✔️]
 - work on the tracking page []
 - work on the notification page []
 - move to github []

@@ -4,6 +4,7 @@ import useAppStore from "./zustand"
 import { BsTrashFill } from 'react-icons/bs'
 import styles from '../styles/fav-cart.module.css'
 import { priceInCurrency, randomNumber } from '../assets/data/goodsCardData'
+import { AnimatePresence, motion } from 'framer-motion'
 
 
 
@@ -23,6 +24,10 @@ const Cart = ()=>{
             return updated
         })
     }
+
+    useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
     // setting shipping price
     useEffect(() => {
@@ -53,10 +58,17 @@ const Cart = ()=>{
 
     <div className={`container ${styles.container}`}>
 
-        <div className={styles.header}><h2>My Cart</h2></div>
+        <motion.div className={styles.header}
+            initial={{opacity: 0, x: -20}}
+            whileInView={{opacity: 1, x: 0}}
+            transition={{duration: .8, ease: 'easeInOut'}}
+            viewport={{once: false, amount: .1}}
+        >
+            <h2>My Cart</h2>
+        </motion.div>
 
         {/* mapping the cart item */}
-        {cart.length > 0 ? cart.map((item)=>{
+        {cart.length > 0 ? cart.map((item, i)=>{
             const qnty = qty[item.id] || ''
             const total = Number(parseFloat(item.price.replace(/[^0-9.]/g, "")))
             * (qnty === '' ? 1 : Number(qnty))
@@ -64,12 +76,29 @@ const Cart = ()=>{
             return (<>
                 <div style={{marginBottom: '10%'}}>
                     <div key={item.id} className={styles.productDetails} >
-                        <div className={styles.imgDiv}>
-                            <img src={item.src} alt={item.name}
-                            style={{width: '100%', height: '100%'}}/>
-                        </div>
+                        <motion.div className={styles.imgDiv}
+                            key={item.id}
+                            initial={{opacity: 0}}
+                            whileInView={{opacity: 1}}
+                            transition={{duration: .8, delay: .1}}
+                            viewport={{once: false, amount: 0.08}}
+                        >
+                            <motion.img src={item.src} alt={item.name}
+                                initial={{opacity: 0, }}
+                                whileInView={{opacity: 1}}
+                                transition={{duration: .8}}
+                                viewport={{once: false, amount: 0.08}}
+                                style={{width: '100%', height: '100%'}}
+                            />
+                        </motion.div>
 
-                        <div className={styles.detailsCon}>
+                        <motion.div className={styles.detailsCon}
+                            key={item.id}
+                            initial={{y: 20, opacity: 0}}
+                            whileInView={{y: 0, opacity: 1}}
+                            transition={{duration: .8, ease: 'easeInOut', delay: .1}}
+                            viewport={{once: false, amount: 0.08}}
+                        >
                             <h4>{item.name}</h4>
                             <p>{item.desc}</p>
                             <p>{item.price}</p>
@@ -92,7 +121,7 @@ const Cart = ()=>{
                             
                             <BsTrashFill onClick={()=>handleRemove(item.id)} style={{color: 'green'}}/>
 
-                        </div>
+                        </motion.div>
                         
                     </div>
                 </div>
@@ -107,29 +136,44 @@ const Cart = ()=>{
         {/* checkin out section */}
         {cart.length > 0 && 
         <div>
-            <div style={{display: 'flex', justifyContent: 'space-evenly'}}>
+            <motion.div style={{display: 'flex', justifyContent: 'space-evenly'}}
+                initial={{y: 20, opacity: 0}}
+                whileInView={{y: 0, opacity: 1}}
+                transition={{duration: .8, ease: 'easeInOut', delay: .1}}
+                viewport={{once: false, amount: 0.08}}
+            >
                 <h4>shipping fee & tax:</h4>
                 <h4>
                     {priceInCurrency('en-NG', 'NGN')
                     .format(totalShipping)}
                 </h4>
-            </div>
-            <div style={{display: 'flex', justifyContent: 'space-evenly'}}>
+            </motion.div>
+            
+            <motion.div style={{display: 'flex', justifyContent: 'space-evenly'}}
+                initial={{y: 20, opacity: 0}}
+                whileInView={{y: 0, opacity: 1}}
+                transition={{duration: .8, ease: 'easeInOut', delay: .1}}
+                viewport={{once: false, amount: 0.08}}
+            >
                 <h4>Checkout Total:</h4>
                 <h4>
                     {priceInCurrency('en-NG', 'NGN')
                     .format(isNaN(grandTotal) ? 0 : grandTotal)}
                 </h4>
-            </div>
-            <div style={{
+            </motion.div>
+            <motion.div style={{
                 display: 'flex', justifyContent: 'center', alignItems: 'center', width: '90%',
                 position: 'absolute', bottom: '0'
                 }}
+                initial={{y: 20, opacity: 0}}
+                whileInView={{y: 0, opacity: 1}}
+                transition={{duration: .5, ease: 'easeInOut', delay: .05}}
+                viewport={{once: false, amount: 0.05}}
             >
-                <button style={{width: '100%', color: 'white', backgroundColor: '#16e416ee'}}>
+                <button style={{width: '100%'}} className={styles.favCartBtn}>
                     check out <span>→</span>
                 </button>
-        </div>
+        </motion.div>
         </div>
         }
 

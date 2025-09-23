@@ -10,7 +10,7 @@ import {
   MdFavoriteBorder,
   MdFavorite,
 } from "react-icons/md";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, easeInOut, motion } from "framer-motion";
 import Slider from "../components/slider";
 import { Img } from "../components/list";
 import useAppStore from "../components/zustand";
@@ -21,7 +21,7 @@ const categories = [
   { title: "Phones", cat: phones },
 ];
 
-type Product = {
+export type Product = {
   about?: any;
   store?: any;
   id: number;
@@ -57,8 +57,8 @@ const Home = () => {
     const rect = ref.cartButtonRef.getBoundingClientRect();
     const start = {
       x: rect.left + rect.width / 2,
-      y: screen >= 800 ?  rect.top - rect.height * 2 : rect.top - rect.height * 4
-    };
+      y: rect.top + rect.height / 2 
+    }
 
     setFlyingCarts((prev) => [
       ...prev,
@@ -78,8 +78,15 @@ const Home = () => {
     return () => clearInterval(interval);
   }, [phones.length, card]);
 
+
+  useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [location.pathname]);
+
+
   return (
     <div className={styles.homeCon}>
+
       {/* Search Bar */}
       <div className={styles.searchCon}>
         <div className={styles.inputDiv}>
@@ -110,8 +117,8 @@ const Home = () => {
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-        viewport={{ once: false, amount: 0.1 }}
+        transition={{ duration: 0.6, delay: 0.05, ease: 'easeInOut' }}
+        viewport={{ once: false, amount: 0.05 }}
       >
         <div className={styles.sliderCon}>
           <div className={styles.sliderTitle}>
@@ -140,7 +147,7 @@ const Home = () => {
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: i * 0.1,  }}
-            viewport={{ once: false, amount: 0.1 }}
+            viewport={{ once: false, amount: 0.05 }}
           >
             {/* Title */}
             <motion.div
@@ -160,7 +167,7 @@ const Home = () => {
                   key={a.id}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
+                  transition={{ duration: .5 }}
                   viewport={{ once: false }}
                 >
                   <Card
@@ -224,10 +231,11 @@ const Home = () => {
             }}
             animate={{
               x: [anim.start.x, anim.start.x, anim.end.x],
-              y: [anim.start.y, anim.start.y - 10, anim.end.y],
-              scale: [1, 1.2, 1], opacity: [1, 1, anim.end.y / 100]
+              y: [anim.start.y, anim.start.y - 40, anim.end.y + 65],
+              scale: [1, 1.2, 1],
+              opacity: [1, 1, .5],
             }}
-            transition={{ duration: 1, times: [0, 0.5, 1], ease: 'circInOut' }}
+            transition={{ duration: 1, times: [0, 0.3, 1], ease: 'easeInOut' }}
             onAnimationComplete={() =>
               setFlyingCarts((prev) => prev.filter((f) => f !== anim))
             }
@@ -235,6 +243,8 @@ const Home = () => {
               position: "fixed",
               zIndex: 9999,
               pointerEvents: "none",
+              top: 0,
+              left: 0
             }}
           >
             <MdAddShoppingCart style={{ color: "green", fontSize: "24px" }} />
@@ -250,7 +260,7 @@ const Home = () => {
             initial={{ y: "100%", opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: "100%", opacity: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.8, ease: easeInOut }}
           >
             <div className={styles.cancleDiv}>
               <MdOutlineCancel

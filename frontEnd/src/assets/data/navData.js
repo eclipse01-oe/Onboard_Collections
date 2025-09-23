@@ -36,7 +36,7 @@ export const bottomNavList = [
         listIcon: TbHome,
     },
     {
-        to: '',
+        to: '/tracking',
         listItem: 'Track',
         listIcon: FaExternalLinkAlt,
     },
@@ -51,7 +51,7 @@ export const bottomNavList = [
         listIcon: MdFavoriteBorder,
     },
     {
-        to: '',
+        to: '/notifications',
         listItem: 'Notification',
         listIcon: MdOutlineNotificationsActive,
     },

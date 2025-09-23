@@ -60,7 +60,7 @@ const useAppStore = create<AppStore>()(
     }),
     {
       name: "app-storage",
-      partialize: (state) => ({ theme: state.theme, favorite: state.favorite }),
+      partialize: (state) => ({ theme: state.theme, favorite: state.favorite, cart: state.cart }),
     }
   )
 );

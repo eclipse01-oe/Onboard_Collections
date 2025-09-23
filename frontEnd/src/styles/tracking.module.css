@@ -1,0 +1,14 @@
+.header{
+    border-bottom: 2px solid #16e416ee;
+    margin-bottom: 5%;
+}
+.header h2{
+    margin-bottom: 1%;
+}
+
+
+@media (max-width: 1000px) {
+    .header{
+        margin: 10% 0 5% 0;
+    }
+}

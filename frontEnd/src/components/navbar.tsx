@@ -3,8 +3,7 @@ import { Link } from "react-router-dom"
 import List, {Img} from "./list"
 import styles from '../styles/navbar.module.css'
 import { listArray, bottomNavList } from '../assets/data/navData'
-import { FaCaretDown, FaRegUser } from 'react-icons/fa';
-import { FaCartArrowDown} from 'react-icons/fa';
+import { FaCaretDown, FaCartArrowDown, FaRegUser } from 'react-icons/fa';
 import { MdOutlineCancel } from 'react-icons/md';
 import { HiOutlineMenuAlt3 } from 'react-icons/hi';
 import { motion, AnimatePresence } from "framer-motion";

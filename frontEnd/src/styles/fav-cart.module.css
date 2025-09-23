@@ -2,7 +2,6 @@
     position: relative;
     gap: 0;
     margin-bottom: 13%;
-    overflow-x: hidden;
 }
 
 .header{
@@ -72,6 +71,29 @@
 
 .total h4{
     margin: 1%;
+}
+
+.favCartBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #16e416ee;
+}
+
+.favCartBtn:hover{
+    background-color: #16e416ee;
+    border: 1px solid white;
+}
+
+@media (prefers-color-scheme: light){
+    .favCartBtn{
+        background-color: transparent;
+    }
+    .favCartBtn:hover{
+   
+    border: 1px solid #16e416ee;
+    }
+
 }
 
 @media (max-width: 1000px) {

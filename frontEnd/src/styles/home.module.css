@@ -314,6 +314,10 @@ button:disabled:hover{
         color: #263d51ca;
     }
 
+    .cardContainer{
+        border-top-color: #16e416;
+    }
+
     .detailsDiv button{
         background-color: #16e416;
     }
