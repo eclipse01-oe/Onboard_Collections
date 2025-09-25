@@ -1,5 +1,5 @@
 import { TbHome } from 'react-icons/tb';
-import { FaExternalLinkAlt } from 'react-icons/fa';
+import { FaExternalLinkAlt, FaCartArrowDown } from 'react-icons/fa';
 import { MdFavoriteBorder, MdOutlineNotificationsActive } from 'react-icons/md';
 
 export const listArray = [
@@ -41,9 +41,10 @@ export const bottomNavList = [
         listIcon: FaExternalLinkAlt,
     },
     {
-        id: 'profile',
-        to: '',
-        listItem: '',
+        id: 'cart',
+        to: '/cart',
+        listItem: 'Cart',
+        listIcon: FaCartArrowDown,
     },
     {
         to: 'favorite',

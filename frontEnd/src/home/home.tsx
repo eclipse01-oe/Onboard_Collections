@@ -231,7 +231,7 @@ const Home = () => {
             }}
             animate={{
               x: [anim.start.x, anim.start.x, anim.end.x],
-              y: [anim.start.y, anim.start.y - 40, anim.end.y + 65],
+              y: [anim.start.y, anim.start.y - 40, anim.end.y],
               scale: [1, 1.2, 1],
               opacity: [1, 1, .5],
             }}

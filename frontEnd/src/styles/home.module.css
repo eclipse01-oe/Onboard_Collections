@@ -83,9 +83,9 @@ button:disabled:hover{
     display: flex;
     flex-direction: column;
     margin: 50px 5% 0 25%;
-    background-color: #000000;
+    background-color: #16e416ba;
     backdrop-filter: blur(20px);
-    /* box-shadow: 0 0 15px #16e416b5; */
+    box-shadow: 0 0 15px #16e416b5;
     border-radius: 20px;
     padding: 10px 20px;
 }

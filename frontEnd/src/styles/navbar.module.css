@@ -66,11 +66,11 @@ ul{
 .bottomNav{
     display: flex;
     position: relative;
-    height: 5rem;
+    height: 4rem;
     width: 100%;
     bottom: 0;
     left: 21vw;
-    mask: radial-gradient(circle 30px at 50% -20%, transparent 0 40px, black 40px);
+    /* mask: radial-gradient(circle 30px at 50% -20%, transparent 0 40px, black 40px);
     mask-repeat: no-repeat;
     mask-size: cover;
     -moz-mask: radial-gradient(circle 30px at 50% -20%, transparent 0 40px, black 40px);
@@ -79,7 +79,7 @@ ul{
     -webkit-mask: radial-gradient(circle 30px at 50% -20%, transparent 0 40px, black 40px);
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-size: cover;
-    overflow: visible;
+    overflow: visible; */
 }
 .bottomNavProfile {
     height: 65px;
