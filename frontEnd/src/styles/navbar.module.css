@@ -103,7 +103,7 @@ ul{
     justify-content: space-around;
     align-items: center;
     flex: 1;
-    background-color: #16e416ee;
+    background-color: #000000ee;
     backdrop-filter: blur(100px);
     color: aliceblue;
     flex-direction: row;
@@ -188,7 +188,7 @@ ul{
         border: 2px solid #16e416 ;
     }
     .bottomNav ul{
-        background-color: #16e416f1;
+        background-color: #aaaaaaf1;
         backdrop-filter: blur(100px);
     }
 
