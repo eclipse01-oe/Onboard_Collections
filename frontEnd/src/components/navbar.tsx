@@ -137,15 +137,16 @@ const BottomNav = () => {
             {bottomNavList && bottomNavList.length > 0 &&(
                 <ul>
                     {bottomNavList?.map((a, i) => <List key={i}
-                        // ref={a.id === 'cart' ? cartRef : null}
+                        
                         to={a.to}
                         id={a.id} className={a.id && styles.bottomList}
                         listIcon={a.listIcon}
                         listIconStyle={{width: '100%', height: '100%'}}
                         listConStyle={{
-                            display: 'flex', justifyContent: 'center', alignItems: 'center',
-                            width: '150%', height: '100%'
+                            width: '150%', marginTop: '100%'
                         }}
+                        linkClassName={({ isActive }) =>`${styles.navItem} ${isActive ? styles.active : ''}`}
+                        linkStyle={{width: '100%'}}
                     />)}
                 </ul>
             )

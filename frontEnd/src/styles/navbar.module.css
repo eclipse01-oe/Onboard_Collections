@@ -66,7 +66,7 @@ ul{
 .bottomNav{
     display: flex;
     position: relative;
-    height: 5rem;
+    /* height: 5rem; */
     width: 100%;
     bottom: 0;
     left: 21vw;
@@ -112,6 +112,28 @@ ul{
     position: relative;
     padding: 0;
 }
+
+.navItem {
+  position: relative;
+}
+
+/* underline pseudo-element */
+.navItem::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background: #16e416b1;
+  transition: width 0.3s ease-in-out;
+}
+
+/* when active, animate underline */
+.navItem.active::after {
+  width: 100%;
+}
+
 
 .navUserIconDiv{
     display: flex;

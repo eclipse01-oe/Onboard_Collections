@@ -1,5 +1,5 @@
 import { forwardRef } from "react"
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 type ListProp = {
     className?: string;
@@ -13,6 +13,8 @@ type ListProp = {
     to?: string;
     liSrc?: string;
     id?: string;
+    linkClassName?: string | ((props: { isActive: boolean }) => string | undefined);
+    linkStyle?: React.CSSProperties
 }
 
 type ImgProps = {
@@ -31,11 +33,11 @@ const Img = forwardRef<HTMLImageElement, ImgProps> ((props, ref)=>{
 Img.displayName = 'Img'
 
 const List = forwardRef<HTMLLIElement, ListProp>((props, ref) => {
-    const { className, style, listItem, listConStyle, to, liSrc, id,
+    const { className, style, listItem, listConStyle, to, liSrc, id, linkClassName, linkStyle,
     listConClass, listIcon: ListIcon, listIconClass, listIconStyle, ...rest} = props;
 
     const list = (
-        <div className={listConClass} style={listConStyle}>
+        <>
             {
                 liSrc ? (
                     <Img src={liSrc} className={className} style={style} />
@@ -44,16 +46,21 @@ const List = forwardRef<HTMLLIElement, ListProp>((props, ref) => {
                 )
             }
             <p>{listItem}</p>
-        </div>
+        </>
     )
     
     if(to){
         return (
-            <Link to={to}>
+            
                 <li ref={ref} className={className} style={style} id={id} {...rest}>
-                    {list}
+                    <div className={listConClass} style={listConStyle}>
+                    <NavLink to={to} className={linkClassName} style={linkStyle}>
+                        {list}
+                    </NavLink>
+                    </div>
                 </li>
-            </Link>
+                
+            
         )
     }
 
