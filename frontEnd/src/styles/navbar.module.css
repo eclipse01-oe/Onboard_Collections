@@ -76,7 +76,7 @@ ul{
     -moz-mask: radial-gradient(circle 50px at 50% -50%, transparent 0 40px, black 40px);
     -moz-mask-repeat: no-repeat;
     -moz-mask-size: cover;
-    -webkit-mask: radial-gradient(circle 50px at 50% -10%, transparent 0 55px, black 40px);
+    -webkit-mask: radial-gradient(circle 50px at 50% -10%, transparent 0 45px, black 40px);
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-size: cover;
     overflow: visible;
@@ -86,7 +86,7 @@ ul{
     width: 65px;
     border-radius: 50%;
     position: absolute;
-    top: -35px;
+    top: -45px;
     display: flex;
     left: 76.8%;
     align-items: center;
@@ -269,12 +269,9 @@ ul{
     .bottomNavProfile {
         left: 50%;
         transform: translateX(-50.9%);
-    }
-
-    .bottomNavProfile {
         height: 60px;
         width: 60px;
-        top: -30px;
+        top: -40px;
     }
 
 }
