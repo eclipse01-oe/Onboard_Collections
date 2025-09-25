@@ -16,11 +16,12 @@ button:disabled:hover{
 
 .searchCon{
     background-color: #08080891;
-    display: flex;
-    align-items: normal;
-    width: 100%;
+    width: 79%;
     height: 80px;
-    margin-left: 21vw;
+    left: 21vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     z-index: 2;
     flex-direction: column;
     position: fixed;
@@ -39,19 +40,19 @@ button:disabled:hover{
 }
 
 .inputDiv{
-    padding-left: 7%;
     display: flex;
     align-items: center;
     position: relative;
-    width: 60%;
-    z-index: 3;
+    width: 87%;
     position: fixed;
-    top: 20px;
+    top: 15px;
 }
 .inputIcon{
     position: absolute;
     right: 10px;
     cursor: pointer;
+    height: 80%;
+    width: 3%;
 }
 .searchCon input{
     width: 100%;
@@ -343,28 +344,19 @@ button:disabled:hover{
 
 
 @media (max-width: 1000px) {
-    .homeCon{
-        margin-top: 10vh;
-        display: flex;
-        position: relative;
-    }
    
     .searchCon{
-        margin-left: auto;
-        margin-bottom: 30px;
         top: 55px;
         height: 80px;
-    }
-    .searchCon input{
-        margin-left: 10%;
+        left: 0;
+        width: 100%;
     }
 
     .sliderCon{
         margin: 10% 3% 0;
     }
     .inputDiv{
-        width: 80%;
-        padding-left: 30px;
+        width: 90%;
     }
 
     .modal{
@@ -396,7 +388,7 @@ button:disabled:hover{
     
 }
 
-@media (max-width: 630px){
+@media (max-width: 730px){
     .imgDiv{
         height: 200px;
     }
@@ -410,7 +402,8 @@ button:disabled:hover{
         display: none;
     }
     .searchCon input{
-        height: 3rem;
+        height: 2rem;
+        border-radius: 5px;
     }
     .searchCon{
         padding-left: 0;
@@ -419,6 +412,11 @@ button:disabled:hover{
     .modal{
         margin-top: 4.3rem;
         margin-right: 8%;
+    }
+
+    .inputIcon{
+        height: 80%;
+        width: 5%;
     }
     
 }

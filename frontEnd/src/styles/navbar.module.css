@@ -66,27 +66,27 @@ ul{
 .bottomNav{
     display: flex;
     position: relative;
-    height: 4rem;
+    height: 5rem;
     width: 100%;
     bottom: 0;
     left: 21vw;
-    /* mask: radial-gradient(circle 30px at 50% -20%, transparent 0 40px, black 40px);
+    mask: radial-gradient(circle 50px at 50% -50%, transparent 0 40px, black 40px);
     mask-repeat: no-repeat;
     mask-size: cover;
-    -moz-mask: radial-gradient(circle 30px at 50% -20%, transparent 0 40px, black 40px);
+    -moz-mask: radial-gradient(circle 50px at 50% -50%, transparent 0 40px, black 40px);
     -moz-mask-repeat: no-repeat;
     -moz-mask-size: cover;
-    -webkit-mask: radial-gradient(circle 30px at 50% -20%, transparent 0 40px, black 40px);
+    -webkit-mask: radial-gradient(circle 50px at 50% -10%, transparent 0 55px, black 40px);
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-size: cover;
-    overflow: visible; */
+    overflow: visible;
 }
 .bottomNavProfile {
     height: 65px;
     width: 65px;
     border-radius: 50%;
     position: absolute;
-    top: -55px;
+    top: -35px;
     display: flex;
     left: 76.8%;
     align-items: center;
@@ -274,7 +274,7 @@ ul{
     .bottomNavProfile {
         height: 60px;
         width: 60px;
-        top: -50px;
+        top: -30px;
     }
 
 }

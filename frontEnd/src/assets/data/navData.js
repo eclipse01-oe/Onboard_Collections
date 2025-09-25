@@ -42,9 +42,9 @@ export const bottomNavList = [
     },
     {
         id: 'cart',
-        to: '/cart',
-        listItem: 'Cart',
-        listIcon: FaCartArrowDown,
+        to: '',
+        listItem: '',
+        // listIcon: FaCartArrowDown,
     },
     {
         to: 'favorite',

@@ -102,7 +102,7 @@ const Navbar = () => {
 const BottomNav = () => {
 
     const setCartPos = useAppStore(a => a.setCartPos)
-    const cartRef = useRef<HTMLLIElement>(null)
+    const cartRef = useRef<HTMLDivElement>(null)
 
     useLayoutEffect(() => {
         const updatePos = () => {
@@ -125,19 +125,19 @@ const BottomNav = () => {
 
     
     return (<div className={styles.bottomNavCon} >
-        {/* <div className={styles.bottomNavProfile}  ref={cartRef}>
+        <div className={styles.bottomNavProfile}  ref={cartRef}>
             <Link to='/cart' style={{height: '100%', width: '100%', display: 'contents'}}>
                 <FaCartArrowDown style={{
                 height: '100%', width: '60%', color: 'green',
                 }} />
             </Link>
-        </div> */}
+        </div>
         <div className={styles.bottomNav}> 
         
             {bottomNavList && bottomNavList.length > 0 &&(
                 <ul>
                     {bottomNavList?.map((a, i) => <List key={i}
-                        ref={a.id === 'cart' ? cartRef : null}
+                        // ref={a.id === 'cart' ? cartRef : null}
                         to={a.to}
                         id={a.id} className={a.id && styles.bottomList}
                         listIcon={a.listIcon}

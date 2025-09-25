@@ -97,7 +97,6 @@ const Home = () => {
             onChange={(e) => setInputValue(e.target.value)}
           />
           <FaSearch
-            style={{ height: "1.6rem", width: "1.6rem" }}
             className={styles.inputIcon}
           />
         </div>
