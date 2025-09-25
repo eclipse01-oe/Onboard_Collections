@@ -1,6 +1,7 @@
 import { TbHome } from 'react-icons/tb';
 import { FaExternalLinkAlt, FaCartArrowDown } from 'react-icons/fa';
 import { MdFavoriteBorder, MdOutlineNotificationsActive } from 'react-icons/md';
+import { MdOutlineIosShare } from 'react-icons/md';
 
 export const listArray = [
     {
@@ -38,7 +39,7 @@ export const bottomNavList = [
     {
         to: '/tracking',
         listItem: 'Track',
-        listIcon: FaExternalLinkAlt,
+        listIcon: MdOutlineIosShare,
     },
     {
         id: 'cart',
