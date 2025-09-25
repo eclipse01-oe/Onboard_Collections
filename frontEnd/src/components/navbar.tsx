@@ -132,8 +132,8 @@ const BottomNav = () => {
                 }} />
             </Link>
         </div>
-        <div className={styles.bottomNav}>
-            
+        <div className={styles.bottomNav}> 
+        
             {bottomNavList && bottomNavList.length > 0 &&(
                 <ul>
                     {bottomNavList?.map((a, i) => <List key={i}
