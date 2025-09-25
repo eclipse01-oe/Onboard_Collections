@@ -233,7 +233,7 @@ const Home = () => {
               x: [anim.start.x, anim.start.x, anim.end.x],
               y: [anim.start.y, anim.start.y - 40, anim.end.y],
               scale: [1, 1.2, 1],
-              opacity: [1, 1, .5],
+              opacity: [1, 1, .2],
             }}
             transition={{ duration: 1, times: [0, 0.3, 1], ease: 'easeInOut' }}
             onAnimationComplete={() =>
