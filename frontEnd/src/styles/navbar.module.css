@@ -103,7 +103,7 @@ ul{
     justify-content: space-around;
     align-items: center;
     flex: 1;
-    background-color: #101a23f7;
+    background-color: #000000f2;
     backdrop-filter: blur(1000px);
     color: aliceblue;
     flex-direction: row;
