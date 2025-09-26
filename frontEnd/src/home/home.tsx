@@ -197,9 +197,9 @@ const Home = () => {
                     }}
                     btnChildren={
                       cart.find((i) => i.id === a.id) ? (
-                        <h4>In cart</h4>
+                        <h5>In cart</h5>
                       ) : (
-                        <h4>Add to cart</h4>
+                        <h5>Add to cart</h5>
                       )
                     }
                     iconProps={{ className: styles.icon }}

@@ -94,7 +94,7 @@ ul{
     padding: 5px 8px 5px 5px;
     transform: translateX(-49%);
     z-index: 2;
-    box-shadow: 0 0 10px #16e416b1;
+    box-shadow: 0 0 10px #16e416;
     background-color: rgba(0, 0, 0, 0.608);
     backdrop-filter: blur(1px);
 }

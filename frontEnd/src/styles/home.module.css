@@ -84,7 +84,7 @@ button:disabled:hover{
     display: flex;
     flex-direction: column;
     margin: 50px 5% 0 25%;
-    background-color: #16e41642;
+    background-color: #1ca31c42;
     backdrop-filter: blur(20px);
     box-shadow: 0 0 25px #16e416b5;
     border-radius: 20px;
@@ -147,7 +147,7 @@ button:disabled:hover{
     width: 100%;
 }
 
-.detailsDiv p, .detailsDiv h3, .detailsDiv h4{
+.detailsDiv p, .detailsDiv h3, .detailsDiv h5{
     margin: 0;
 }
 .nameDiv{
@@ -274,7 +274,7 @@ button:disabled:hover{
     margin-top: 20px;
 }
 
-.detailsPageContent table h4, .detailsPageContent table h2{
+.detailsPageContent table h5, .detailsPageContent table h2{
     padding: 0;
     margin: 0;
 }
@@ -293,7 +293,7 @@ button:disabled:hover{
 
 @media (prefers-color-scheme: light){
     .productCard{
-        background-color: rgba(0, 0, 0, 10%);
+        background-color: #0000002b;
         backdrop-filter: blur(10px);
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     }
@@ -400,9 +400,6 @@ button:disabled:hover{
     .productCard{
         padding-top: 150px;
     }
-    button {
-    padding: .3em .6em;
-    }
     .detailsDiv p{
         display: none;
     }
@@ -464,6 +461,15 @@ button:disabled:hover{
 @media (max-width: 380px) {
     .sliderCon{
         margin-top: 25%;
+    }
+     button {
+    padding: .3em .6em;
+    }
+    .productCard{
+        padding-top: 100px;
+    }
+    .imgDiv{
+        height: 150px;
     }
 }
 

@@ -56,7 +56,7 @@ const Card = forwardRef<ProductCardRef, ProductCardProps>((p, ref) => {
                     <div>⭐{rating ?? 0}</div>
                 </div>
                 <p>{desc ?? 'No description'}</p>
-                <h4>{price ?? 0}</h4>
+                <h5>{price ?? 0}</h5>
                 </div>
                 
                 <button ref={cartButtonRef} {...buttonProps}>
