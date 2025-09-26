@@ -66,7 +66,7 @@ ul{
 .bottomNav{
     display: flex;
     position: relative;
-    height: 5rem;
+    height: 4rem;
     width: 100%;
     bottom: 0;
     left: 21vw;
@@ -103,7 +103,7 @@ ul{
     justify-content: space-around;
     align-items: center;
     flex: 1;
-    background-color: #000000f2;
+    background-color: #101a23ed;
     backdrop-filter: blur(100px);
     color: aliceblue;
     flex-direction: row;

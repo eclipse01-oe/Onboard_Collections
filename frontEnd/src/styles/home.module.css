@@ -127,7 +127,7 @@ button:disabled:hover{
     border-radius: 20px;
     display: flex;
     flex-direction: column;
-    background-color: black;
+    background-color: #101a23c2;
     position: relative;
     padding-top: 240px;
     margin-top: 40px;
