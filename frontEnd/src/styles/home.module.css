@@ -389,6 +389,11 @@ button:disabled:hover{
 }
 
 @media (max-width: 730px){
+
+    .homeCon{
+        margin-top: 6vh;
+    }
+
     .imgDiv{
         height: 200px;
     }
