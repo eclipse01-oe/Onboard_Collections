@@ -127,7 +127,7 @@ button:disabled:hover{
     border-radius: 20px;
     display: flex;
     flex-direction: column;
-    background-color: #417941ba;
+    background-color: #314e3199;
     position: relative;
     padding-top: 240px;
     margin-top: 40px;
@@ -184,7 +184,6 @@ button:disabled:hover{
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #16e416;
 }
 
 .detailsDiv button:hover{
